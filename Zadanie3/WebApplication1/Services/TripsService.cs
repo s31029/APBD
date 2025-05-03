@@ -10,8 +10,8 @@ namespace WebApplication1.Services
     public class TripsService : ITripsService
     {
         private readonly string _connectionString =
-            "Data Source=DESKTOP-NCPTLIL\\SQLEXPRESS;Initial Catalog=APBD;Integrated Security=True;TrustServerCertificate=True;";
-
+            "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=APBD;Integrated Security=True;";
+        
         public async Task<List<TripDTO>> GetTripsAsync()
         {
             var trips = new Dictionary<int, TripDTO>();
