@@ -161,7 +161,7 @@ namespace Tutorial9.Controllers
             }
         }
 
-        // Zadanie 2 
+        // Zadanie 2
         [HttpPost("with-proc")]
         public async Task<IActionResult> AddProductWithProc([FromBody] WarehouseDto dto)
         {
