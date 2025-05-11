@@ -397,9 +397,9 @@ FodyWeavers.xsd
 *.msp
 
 # JetBrains Rider / IntelliJ IDEA
-.idea/              # wszystkie ustawienia IDE
-*.sln.iml           # Rider‑owy model projektu
-# (opcjonalnie – jeśli chcesz „na wszelki wypadek”)
+.idea/
+**/.idea/              
+*.sln.iml           
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
