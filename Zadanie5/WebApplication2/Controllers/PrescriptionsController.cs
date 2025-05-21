@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication2.DTOs;
-using WebApplication2.Services;   // tu IDbService
+using WebApplication2.Services; 
 
 namespace WebApplication2.Controllers
 {
@@ -10,7 +10,7 @@ namespace WebApplication2.Controllers
     [Route("api/[controller]")]
     public class PrescriptionsController : ControllerBase
     {
-        private readonly IDbService _svc;  // <-- tutaj IDbService
+        private readonly IDbService _svc;
 
         public PrescriptionsController(IDbService svc)
         {
@@ -37,6 +37,6 @@ namespace WebApplication2.Controllers
 
         [HttpGet("{idPrescription}")]
         public IActionResult GetById(int idPrescription)
-            => Ok(/* tu ewentualnie później zwrócisz DTO recepty */);
+            => Ok();
     }
 }

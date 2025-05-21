@@ -5,7 +5,6 @@ namespace WebApplication2.Models
     [Table("Prescription_Medicament")]
     public class PrescriptionMedicament
     {
-        // uwaga: composite key definiujemy w OnModelCreating, DataAnnotations nie wspiera go bezpośrednio
         public int IdMedicament { get; set; }
         public int IdPrescription { get; set; }
 

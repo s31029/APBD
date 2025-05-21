@@ -23,8 +23,7 @@ namespace WebApplication2.Services
                 throw new ArgumentException("Recepta musi mieć 1–10 leków.");
             if (dto.DueDate < dto.Date)
                 throw new ArgumentException("DueDate musi być >= Date.");
-
-            // 1) Pacjent
+            
             Patient patient;
             if (dto.Patient.IdPatient.HasValue &&
                 await _ctx.Patients.FindAsync(dto.Patient.IdPatient.Value) is Patient existing)
@@ -33,7 +32,6 @@ namespace WebApplication2.Services
             }
             else
             {
-                // ręczne mapowanie DTO → encja
                 patient = new Patient
                 {
                     FirstName = dto.Patient.FirstName,
@@ -42,20 +40,17 @@ namespace WebApplication2.Services
                 };
                 _ctx.Patients.Add(patient);
             }
-
-            // 2) Leki
+            
             var ids = dto.Medicaments.Select(m => m.IdMedicament).ToList();
             var meds = await _ctx.Medicaments
                                  .Where(m => ids.Contains(m.IdMedicament))
                                  .ToListAsync();
             if (meds.Count != ids.Count)
                 throw new InvalidOperationException("Jeden z leków nie istnieje.");
-
-            // 3) Lekarz (tu na sztywno albo rozbuduj DTO o IdDoctor)
+            
             var doctor = await _ctx.Doctors.FindAsync(1)
                          ?? throw new InvalidOperationException("Lekarz nie istnieje.");
-
-            // 4) Tworzymy receptę
+            
             var pres = new Prescription
             {
                 Date    = dto.Date,
